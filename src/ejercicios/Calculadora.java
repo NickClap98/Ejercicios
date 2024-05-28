@@ -19,25 +19,46 @@ public class Calculadora {
     while(verificacion == false){
     try{
       
-        System.out.println("Que operacion desea hacer?"+ "\n 1.Sumar \n 2.Restar \n "
-                + "3.Multiplicar \n 4.Dividir" + "\n 5.SALIR o otro numero");
+        System.out.println("""
+                           Que operacion desea hacer?
+                            1.Sumar 
+                            2.Restar 
+                            3.Multiplicar 
+                            4.Dividir
+                            5.SALIR o otro numero""");
      respuesta = sc.nextInt();
-    if (respuesta >=6){System.exit(0);}
+    if (respuesta >=5){
+        System.out.println("Saliendo Exitosamente"
+        );
+           verificacion = true;
+        System.exit(0);}
         System.out.print("Elije el primer numero: ");
         numero1 = sc.nextDouble();
         System.out.print("Elije el segundo numero: ");
         numero2 = sc.nextDouble();
         //SI ELEGIS NUMEROS ENTEROS
-        if (respuesta == 1){ System.out.println("La respuesta es: "+ Calculadora.Sumar(numero1, numero2));}
-        else if(respuesta == 2){System.out.println("La respuesta es: "+ Calculadora.Restar(numero1, numero2));}
-       else if(respuesta == 3){System.out.println("La respuesta es: "+ Calculadora.Multiplicar(numero1, numero2));}
-   else if(respuesta == 4){System.out.println("La respuesta es: "+ Calculadora.Dividir(numero1, numero2));}
-else if(respuesta == 5){System.out.println("La respuesta es: "+ Calculadora.Dividir(numero1, numero2));
-verificacion = true;
-}
-else {System.out.println("HA OCURRIDO UN ERROR, INTENTE NUEVAMENTE");}
+        switch (respuesta) {
+            case 1:
+                System.out.println("La respuesta es: "+ Calculadora.Sumar(numero1, numero2));
+                break;
+            case 2:
+                System.out.println("La respuesta es: "+ Calculadora.Restar(numero1, numero2));
+                break;
+            case 3:
+                System.out.println("La respuesta es: "+ Calculadora.Multiplicar(numero1, numero2));
+                break;
+            case 4:
+                System.out.println("La respuesta es: "+ Calculadora.Dividir(numero1, numero2));
+                break;
+            default:
+                break;
+        }
+
     
-    } catch (Exception e){}
+        
+        
+    } catch (NumberFormatException e) {
+                System.out.println("Error: Ingrese un número válido.");}
     }    
     }
     public static double Sumar(double numero1, double numero2){
